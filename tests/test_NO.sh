@@ -1,24 +1,18 @@
 #! /bin/bash
-# create array
-echo "put objects in array and hit 'Enter' + 'Ctrl+D' when finished"
-while read line
-do
-    my_array=("${my_array[@]}" $line)
-done
-# If you just run it, it will keep reading from standard-input until you hit Enter and Ctrl+D (EOF)
+my_array=(1 2 3 4 5 6)
 max=${my_array[0]}
 for n in "${my_array[@]}" ; do
     ((n > max)) && max=$n
 done
-# sum
+# sum 
 declare -i sum
 IFS=+ sum="${my_array[*]}"
 # compare max value with  sum of array
  if (( max > (sum - max)/2 ));
-then 
+then
 echo "NO"
 elif (( $sum % 2 )); then
 echo "NO"
-else 
+else
 echo "YES"
 fi
